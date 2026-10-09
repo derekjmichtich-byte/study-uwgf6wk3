@@ -1,0 +1,50 @@
+{
+  "owen": [
+    {
+      "title": "Lesson 27",
+      "subject": "Math",
+      "date": "2026-10-08",
+      "html": "lesson-27.html",
+      "pdf": "lesson-27.pdf"
+    }
+  ],
+  "eli": [
+    {
+      "title": "Multiplication facts",
+      "subject": "Math",
+      "date": "2026-10-05",
+      "html": "multiplication-facts.html",
+      "pdf": "multiplication-facts.pdf"
+    },
+    {
+      "title": "Short o / long o",
+      "subject": "Spelling",
+      "date": "2026-10-03",
+      "html": "spelling-short-o-long-o.html",
+      "pdf": "spelling-short-o-long-o.pdf"
+    },
+    {
+      "title": "Test 5 (lessons 17\u201320)",
+      "subject": "Math",
+      "date": "2026-10-01",
+      "html": "test-5-lessons-17-20.html",
+      "pdf": "test-5-lessons-17-20.pdf"
+    }
+  ],
+  "kathryn": [
+    {
+      "title": "Word List 4",
+      "subject": "Spelling",
+      "date": "2026-10-05",
+      "html": "word-list-4.html",
+      "pdf": "word-list-4.pdf"
+    },
+    {
+      "title": "Silent e words",
+      "subject": "Spelling",
+      "date": "2026-10-01",
+      "html": "silent-e-words.html",
+      "pdf": "silent-e-words.pdf"
+    }
+  ]
+}
