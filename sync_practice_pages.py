@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+"""Re-copy the rebuilt practice pages into the site under their EXISTING slugs (same scrubbing as add_item.py:
+emails removed, noindex added, private-string check). site.json entries (title/date/pdf) are left untouched.
+  ./sync_practice_pages.py            # copy all mapped pages
+  ./sync_practice_pages.py --check    # only report which site pages differ"""
+import os, sys, filecmp, tempfile
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from add_item import scrub_html, ROOT
+PAGES = [  # (source html, site path)
+    ("/workspace/practice/Eli_SimpleSolutions_Test5_Practice.html", "eli/test-5-lessons-17-20.html"),
+    ("/workspace/practice/Eli_Spelling_ShortO_LongO.html",          "eli/spelling-short-o-long-o.html"),
+    ("/workspace/practice/Eli_Multiplication_Facts.html",           "eli/multiplication-facts.html"),
+    ("/workspace/practice/Kathryn_Spelling_Practice.html",          "kathryn/silent-e-words.html"),
+    ("/workspace/practice/Kathryn_WordList4_Spelling.html",         "kathryn/word-list-4.html"),
+    ("/workspace/owen-lesson27/Owen_Lesson27_Practice.html",        "owen/lesson-27.html"),
+]
+check = "--check" in sys.argv
+for src, rel in PAGES:
+    dst = os.path.join(ROOT, rel)
+    assert os.path.exists(dst), f"{rel} is not in the site yet (use add_item.py for new pages)"
+    tmp = tempfile.NamedTemporaryFile(delete=False, suffix=".html").name
+    scrub_html(src, tmp)
+    same = filecmp.cmp(tmp, dst, shallow=False)
+    if check: print(("same    " if same else "DIFFERS ") + rel); os.unlink(tmp); continue
+    os.replace(tmp, dst); os.chmod(dst, 0o644)
+    print(("unchanged " if same else "updated   ") + rel)

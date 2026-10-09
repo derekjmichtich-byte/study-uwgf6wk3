@@ -52,4 +52,5 @@ def main():
     lst.append(item)
     json.dump(data, open(p, "w"), indent=2); open(p, "a").write("\n")
     print(f"added {a.kid}/{slug}")
-main()
+if __name__ == "__main__":
+    main()
