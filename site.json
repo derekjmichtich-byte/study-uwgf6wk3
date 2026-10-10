@@ -45,6 +45,13 @@
       "date": "2026-10-01",
       "html": "silent-e-words.html",
       "pdf": "silent-e-words.pdf"
+    },
+    {
+      "title": "Math review: Quizzes 2 & 3",
+      "subject": "Math",
+      "date": "2026-10-10",
+      "html": "math-quiz-2-3.html",
+      "pdf": "math-quiz-2-3.pdf"
     }
   ]
 }
