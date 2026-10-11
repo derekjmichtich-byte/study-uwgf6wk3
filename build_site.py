@@ -19,6 +19,19 @@ def page(title, body):
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>{html.escape(title)}</title>
 <style>{CSS}</style></head><body><main>{body}</main></body></html>\n"""
+def stars_widget(k, n):
+    """Star total + next prize for kids listed in prizes.json (total read from this device's localStorage '<kid>-stars')."""
+    try: pr = json.load(open(os.path.join(ROOT, "prizes.json"))).get(k) or []
+    except FileNotFoundError: pr = []
+    if not pr: return ""
+    pj = json.dumps(sorted(pr, key=lambda x: x["stars"])).replace("</", "<\\/")
+    return (f'<div class="card" id="stars" style="--c:#ffd23f;text-align:center"><div style="font-size:2rem;font-weight:800">⭐ <span id="starTotal">0</span> stars</div>'
+            f'<div style="height:18px;background:#f1e3b5;border-radius:10px;overflow:hidden;margin:10px 0"><i id="starBar" style="display:block;height:100%;width:0;background:linear-gradient(90deg,#ffd23f,#ff922b)"></i></div>'
+            f'<div id="starNext" style="font-size:1.2rem"></div><div style="color:#888;font-size:.85rem;margin-top:6px">Stars are saved on this device.</div></div>'
+            f'<script>(function(){{var P={pj},t=0;try{{t=(JSON.parse(localStorage.getItem("{k}-stars")||"null")||{{}}).total||0;}}catch(e){{}}'
+            f'var n=null,p=0;P.forEach(function(x){{if(x.stars<=t)p=x.stars;else if(!n)n=x;}});document.getElementById("starTotal").textContent=t;'
+            f'document.getElementById("starBar").style.width=(n?Math.round(100*(t-p)/(n.stars-p)):100)+"%";'
+            f'document.getElementById("starNext").textContent=n?"Next prize: "+n.prize+" at "+n.stars+" stars ("+(n.stars-t)+" to go!)":"You won every prize! 🎉";}})();</script>')
 def fmt(d):
     return datetime.date.fromisoformat(d).strftime("%a, %b %-d, %Y")
 def main():
@@ -36,6 +49,6 @@ def main():
                       f'<h2>{html.escape(it["title"])}</h2><p class="date">{fmt(it["date"])}</p>{pr}{pdf}</div>')
         if not items: cards = "<p>Nothing here yet!</p>"
         os.makedirs(os.path.join(ROOT, k), exist_ok=True)
-        open(os.path.join(ROOT, k, "index.html"), "w").write(page(f"{n}'s practice", f'<a class="home" href="../">← Home</a><h1>{e} {n}\'s practice</h1>{cards}'))
+        open(os.path.join(ROOT, k, "index.html"), "w").write(page(f"{n}'s practice", f'<a class="home" href="../">← Home</a><h1>{e} {n}\'s practice</h1>{stars_widget(k, n)}{cards}'))
     print("built")
 main()

@@ -1,0 +1,10 @@
+{
+  "_help": "Kathryn's star prizes. Edit the prize text or add milestones (stars = running total). Then rebuild the practice pages (python3 /workspace/practice/src/build.py) and the site (./publish.sh).",
+  "kathryn": [
+    {"stars": 25, "prize": "a sticker"},
+    {"stars": 50, "prize": "pick the dessert"},
+    {"stars": 100, "prize": "extra screen time"},
+    {"stars": 150, "prize": "pick a family movie"},
+    {"stars": 200, "prize": "a special outing"}
+  ]
+}
