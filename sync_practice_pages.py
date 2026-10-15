@@ -15,6 +15,7 @@ PAGES = [  # (source html, site path)
     ("/workspace/practice/Kathryn_WordList4_Spelling.html",         "kathryn/word-list-4.html"),
     ("/workspace/practice/Kathryn_Math_Quiz2_3.html",              "kathryn/math-quiz-2-3.html"),
     ("/workspace/practice/Eli_Math_Quiz5_Review.html",             "eli/math-quiz-5.html"),
+    ("/workspace/practice/Eli_Number_Bonds_2x1.html",              "eli/number-bonds-2-digit-x-1-digit.html"),
     ("/workspace/owen-lesson27/Owen_Lesson27_Practice.html",        "owen/lesson-27.html"),
 ]
 check = "--check" in sys.argv
