@@ -13,6 +13,13 @@
       "date": "2026-10-15",
       "html": "math-test-review-lessons-31-33.html",
       "pdf": "math-test-review-lessons-31-33.pdf"
+    },
+    {
+      "title": "Extra practice: week of Oct 17",
+      "subject": "Math",
+      "date": "2026-10-17",
+      "html": "extra-practice-2026-10-17.html",
+      "pdf": "extra-practice-2026-10-17.pdf"
     }
   ],
   "eli": [
@@ -57,6 +64,13 @@
       "date": "2026-10-15",
       "html": "number-bonds-2-digit-x-1-digit.html",
       "pdf": "number-bonds-2-digit-x-1-digit.pdf"
+    },
+    {
+      "title": "Extra practice: week of Oct 17",
+      "subject": "Math",
+      "date": "2026-10-17",
+      "html": "extra-practice-2026-10-17.html",
+      "pdf": "extra-practice-2026-10-17.pdf"
     }
   ],
   "kathryn": [
@@ -80,6 +94,13 @@
       "date": "2026-10-10",
       "html": "math-quiz-2-3.html",
       "pdf": "math-quiz-2-3.pdf"
+    },
+    {
+      "title": "Extra practice: week of Oct 17",
+      "subject": "Spelling & Math",
+      "date": "2026-10-17",
+      "html": "extra-practice-2026-10-17.html",
+      "pdf": "extra-practice-2026-10-17.pdf"
     }
   ]
 }
