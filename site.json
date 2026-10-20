@@ -71,6 +71,13 @@
       "date": "2026-10-17",
       "html": "extra-practice-2026-10-17.html",
       "pdf": "extra-practice-2026-10-17.pdf"
+    },
+    {
+      "title": "Reading Practice",
+      "subject": "Reading",
+      "date": "2026-10-20",
+      "html": "reading-practice.html",
+      "pdf": "reading-practice.pdf"
     }
   ],
   "kathryn": [
@@ -108,6 +115,13 @@
       "date": "2026-10-19",
       "html": "spelling-word-list-5.html",
       "pdf": "spelling-word-list-5.pdf"
+    },
+    {
+      "title": "Reading Practice",
+      "subject": "Reading",
+      "date": "2026-10-20",
+      "html": "reading-practice.html",
+      "pdf": "reading-practice.pdf"
     }
   ]
 }
