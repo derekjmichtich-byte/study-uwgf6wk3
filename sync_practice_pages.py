@@ -10,6 +10,7 @@ PAGES = [  # (source html, site path)
     ("/workspace/practice/Eli_SimpleSolutions_Test5_Practice.html", "eli/test-5-lessons-17-20.html"),
     ("/workspace/practice/Eli_Spelling_ShortO_LongO.html",          "eli/spelling-short-o-long-o.html"),
     ("/workspace/practice/Eli_Spelling_U_Yoo_Oo.html",              "eli/spelling-u-yoo-oo.html"),
+    ("/workspace/practice/Eli_Spelling_Vowel_Sounds_oo.html",       "eli/spelling-vowel-sounds-oo.html"),
     ("/workspace/practice/Eli_Multiplication_Facts.html",           "eli/multiplication-facts.html"),
     ("/workspace/practice/Kathryn_Spelling_Practice.html",          "kathryn/silent-e-words.html"),
     ("/workspace/practice/Kathryn_WordList4_Spelling.html",         "kathryn/word-list-4.html"),
