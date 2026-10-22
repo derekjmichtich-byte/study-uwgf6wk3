@@ -18,6 +18,7 @@ PAGES = [  # (source html, site path)
     ("/workspace/practice/Eli_Math_Quiz5_Review.html",             "eli/math-quiz-5.html"),
     ("/workspace/practice/Eli_Number_Bonds_2x1.html",              "eli/number-bonds-2-digit-x-1-digit.html"),
     ("/workspace/owen-lesson27/Owen_Lesson27_Practice.html",        "owen/lesson-27.html"),
+    ("/workspace/eli-eng28/Eli_English_Lessons28_31_Practice.html", "eli/english-test-review-lessons-28-31.html"),
     # weekly extra practice (built by practice/src/build.py from extra_practice.html + xp_<week>_<kid>.json)
     ("/workspace/practice/Owen_Extra_Practice_2026-10-17.html",     "owen/extra-practice-2026-10-17.html"),
     ("/workspace/practice/Eli_Extra_Practice_2026-10-17.html",      "eli/extra-practice-2026-10-17.html"),
