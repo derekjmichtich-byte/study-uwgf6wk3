@@ -32,6 +32,17 @@ def stars_widget(k, n):
             f'if(days.indexOf(f(x))<0)x.setDate(x.getDate()-1);while(days.indexOf(f(x))>=0){{n++;x.setDate(x.getDate()-1);}}'
             f'document.getElementById("starTotal").textContent=t;'
             f'document.getElementById("starNext").textContent=(n>1?"🔥 "+n+" days in a row! ":"")+"Keep practicing. Surprises happen when you keep trying! 🎁";}})();</script>')
+def learn_js(n):
+    """report.js (Learn: #key= saving + parent-granted reward pop-up) with the live reporting config, like the practice pages."""
+    import sys, contextlib, io
+    sys.path.insert(0, "/workspace/practice/src")
+    try:
+        import build_common
+        with contextlib.redirect_stdout(io.StringIO()):
+            js = build_common.report_js("/workspace/practice/reporting/config.json")
+    except Exception as e:
+        print("  (no reward script on index pages:", e, ")"); return ""
+    return f'<script>{js}</script><script>try{{Learn.init({{kid:{json.dumps(n)},page:"index",index:true}},__report.cfg,__report.testEnv);}}catch(e){{}}</script>'
 def fmt(d):
     return datetime.date.fromisoformat(d).strftime("%a, %b %-d, %Y")
 def main():
@@ -49,6 +60,6 @@ def main():
                       f'<h2>{html.escape(it["title"])}</h2><p class="date">{fmt(it["date"])}</p>{pr}{pdf}</div>')
         if not items: cards = "<p>Nothing here yet!</p>"
         os.makedirs(os.path.join(ROOT, k), exist_ok=True)
-        open(os.path.join(ROOT, k, "index.html"), "w").write(page(f"{n}'s practice", f'<a class="home" href="../">← Home</a><h1>{e} {n}\'s practice</h1>{stars_widget(k, n)}{cards}'))
+        open(os.path.join(ROOT, k, "index.html"), "w").write(page(f"{n}'s practice", f'<a class="home" href="../">← Home</a><h1>{e} {n}\'s practice</h1>{stars_widget(k, n)}{cards}{learn_js(n)}'))
     print("built")
 main()
