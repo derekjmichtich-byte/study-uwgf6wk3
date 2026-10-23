@@ -24,14 +24,14 @@ def stars_widget(k, n):
     try: pr = json.load(open(os.path.join(ROOT, "prizes.json"))).get(k) or []
     except FileNotFoundError: pr = []
     if not pr: return ""
-    pj = json.dumps(sorted(pr, key=lambda x: x["stars"])).replace("</", "<\\/")
+    # surprise prizes: the schedule (prize names / thresholds) is NOT shown or embedded here
     return (f'<div class="card" id="stars" style="--c:#ffd23f;text-align:center"><div style="font-size:2rem;font-weight:800">⭐ <span id="starTotal">0</span> stars</div>'
-            f'<div style="height:18px;background:#f1e3b5;border-radius:10px;overflow:hidden;margin:10px 0"><i id="starBar" style="display:block;height:100%;width:0;background:linear-gradient(90deg,#ffd23f,#ff922b)"></i></div>'
             f'<div id="starNext" style="font-size:1.2rem"></div><div style="color:#888;font-size:.85rem;margin-top:6px">Stars are saved on this device.</div></div>'
-            f'<script>(function(){{var P={pj},t=0;try{{t=(JSON.parse(localStorage.getItem("{k}-stars")||"null")||{{}}).total||0;}}catch(e){{}}'
-            f'var n=null,p=0;P.forEach(function(x){{if(x.stars<=t)p=x.stars;else if(!n)n=x;}});document.getElementById("starTotal").textContent=t;'
-            f'document.getElementById("starBar").style.width=(n?Math.round(100*(t-p)/(n.stars-p)):100)+"%";'
-            f'document.getElementById("starNext").textContent=n?"Next prize: "+n.prize+" at "+n.stars+" stars ("+(n.stars-t)+" to go!)":"You won every prize! 🎉";}})();</script>')
+            f'<script>(function(){{var d={{}};try{{d=JSON.parse(localStorage.getItem("{k}-stars")||"null")||{{}};}}catch(e){{}}'
+            f'var t=d.total||0,days=d.days||[],n=0,x=new Date(),f=function(x){{return x.getFullYear()+"-"+("0"+(x.getMonth()+1)).slice(-2)+"-"+("0"+x.getDate()).slice(-2);}};'
+            f'if(days.indexOf(f(x))<0)x.setDate(x.getDate()-1);while(days.indexOf(f(x))>=0){{n++;x.setDate(x.getDate()-1);}}'
+            f'document.getElementById("starTotal").textContent=t;'
+            f'document.getElementById("starNext").textContent=(n>1?"🔥 "+n+" days in a row! ":"")+"Keep practicing. Surprises happen when you keep trying! 🎁";}})();</script>')
 def fmt(d):
     return datetime.date.fromisoformat(d).strftime("%a, %b %-d, %Y")
 def main():

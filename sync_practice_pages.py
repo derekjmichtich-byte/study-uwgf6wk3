@@ -14,6 +14,7 @@ PAGES = [  # (source html, site path)
     ("/workspace/practice/Eli_Multiplication_Facts.html",           "eli/multiplication-facts.html"),
     ("/workspace/practice/Kathryn_Spelling_Practice.html",          "kathryn/silent-e-words.html"),
     ("/workspace/practice/Kathryn_WordList4_Spelling.html",         "kathryn/word-list-4.html"),
+    ("/workspace/practice/Kathryn_WordList5_Spelling.html",         "kathryn/spelling-word-list-5.html"),
     ("/workspace/practice/Kathryn_Math_Quiz2_3.html",              "kathryn/math-quiz-2-3.html"),
     ("/workspace/practice/Eli_Math_Quiz5_Review.html",             "eli/math-quiz-5.html"),
     ("/workspace/practice/Eli_Number_Bonds_2x1.html",              "eli/number-bonds-2-digit-x-1-digit.html"),
@@ -23,6 +24,7 @@ PAGES = [  # (source html, site path)
     ("/workspace/practice/Owen_Extra_Practice_2026-10-17.html",     "owen/extra-practice-2026-10-17.html"),
     ("/workspace/practice/Eli_Extra_Practice_2026-10-17.html",      "eli/extra-practice-2026-10-17.html"),
     ("/workspace/practice/Kathryn_Extra_Practice_2026-10-17.html",  "kathryn/extra-practice-2026-10-17.html"),
+    ("/workspace/practice/wip/owen/lesson-27-quest.html",          "owen/lesson-27-quest.html"),
 ]
 check = "--check" in sys.argv
 for src, rel in PAGES:
