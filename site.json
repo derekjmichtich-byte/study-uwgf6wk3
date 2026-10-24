@@ -27,6 +27,13 @@
       "date": "2026-10-22",
       "html": "lesson-27-quest.html",
       "pdf": null
+    },
+    {
+      "title": "Extra practice: week of Oct 24",
+      "subject": "Math",
+      "date": "2026-10-24",
+      "html": "extra-practice-2026-10-24.html",
+      "pdf": "extra-practice-2026-10-24.pdf"
     }
   ],
   "eli": [
@@ -99,6 +106,13 @@
       "date": "2026-10-22",
       "html": "english-test-review-lessons-28-31.html",
       "pdf": "english-test-review-lessons-28-31.pdf"
+    },
+    {
+      "title": "Extra practice: week of Oct 24",
+      "subject": "English",
+      "date": "2026-10-24",
+      "html": "extra-practice-2026-10-24.html",
+      "pdf": "extra-practice-2026-10-24.pdf"
     }
   ],
   "kathryn": [
@@ -143,6 +157,13 @@
       "date": "2026-10-20",
       "html": "reading-practice.html",
       "pdf": "reading-practice.pdf"
+    },
+    {
+      "title": "Extra practice: week of Oct 24",
+      "subject": "Spelling & Reading",
+      "date": "2026-10-24",
+      "html": "extra-practice-2026-10-24.html",
+      "pdf": "extra-practice-2026-10-24.pdf"
     }
   ]
 }
