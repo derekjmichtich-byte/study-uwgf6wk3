@@ -377,9 +377,13 @@ var Learn=(function(){
   function mode(){var m=CFG&&CFG.modes&&CFG.modes[kid]||CFG&&CFG.mode||"parent";if(/[?&]learner\b/.test(Q))m="learner";return m==="learner"?"learner":"parent";}
   function rec(d,key){return d.skills[key]||(d.skills[key]={b:0,due:0,t:0,L:false,ld:"",seen:0,ok:0,miss:0,pc:false,fade:0});}
   // ---- migration: old adapt.js miss scores (adaptive_<page>_v1) become "due now" review records; old keys are KEPT ----
+  // one browser can hold several kids' old adaptive_<page>_v1 keys (all kids share the site origin): migrate only
+  // the pages this kid owns (xp_<week>_<kid>; Kathryn kmath + kathryn-*; Eli eli*; Owen owen*), never a sibling's
+  function ownsPage(pg){pg=String(pg||"");var x=/^xp_.+_([a-z]+)$/.exec(pg);if(x)return x[1]===kid;
+    var re={kathryn:/^(kmath$|kathryn-)/,eli:/^eli/,owen:/^owen/}[kid];return !!(re&&re.test(pg));}
   function migrate(d){
     if(d.migrated) return;var n=0;
-    try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i),m=/^adaptive_(.+)_v1$/.exec(k||"");if(!m)continue;
+    try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i),m=/^adaptive_(.+)_v1$/.exec(k||"");if(!m||!ownsPage(m[1]))continue;
       var o=JSON.parse(localStorage.getItem(k)||"null");if(!o||!o.skills)continue;
       Object.keys(o.skills).forEach(function(sk){var key=m[1]+"|"+sk;if(d.skills[key])return;var x=o.skills[sk]||{};
         d.skills[key]={b:1,due:Math.min(now(),+x.t||now()),t:+x.t||1,L:false,ld:x.t?dstr(+x.t):"",seen:1,ok:0,miss:Math.max(1,Math.round(+x.miss||1)),pc:true,fade:1,pg:m[1],sk:sk,mig:1};dirty[key]=1;n++;});}}catch(e){}
