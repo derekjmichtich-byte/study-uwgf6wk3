@@ -152,18 +152,25 @@
       "pdf": "spelling-word-list-5.pdf"
     },
     {
-      "title": "Reading Practice",
-      "subject": "Reading",
-      "date": "2026-10-20",
-      "html": "reading-practice.html",
-      "pdf": "reading-practice.pdf"
-    },
-    {
       "title": "Extra practice: week of Oct 24",
       "subject": "Spelling & Reading",
       "date": "2026-10-24",
       "html": "extra-practice-2026-10-24.html",
       "pdf": "extra-practice-2026-10-24.pdf"
+    },
+    {
+      "title": "Spelling Word List 6",
+      "subject": "Spelling",
+      "date": "2026-10-26",
+      "html": "spelling-word-list-6.html",
+      "pdf": "spelling-word-list-6.pdf"
+    },
+    {
+      "title": "Reading Practice",
+      "subject": "Reading",
+      "date": "2026-10-26",
+      "html": "reading-practice.html",
+      "pdf": "reading-practice.pdf"
     }
   ]
 }

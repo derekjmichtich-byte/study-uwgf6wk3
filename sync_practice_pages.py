@@ -15,6 +15,7 @@ PAGES = [  # (source html, site path)
     ("/workspace/practice/Kathryn_Spelling_Practice.html",          "kathryn/silent-e-words.html"),
     ("/workspace/practice/Kathryn_WordList4_Spelling.html",         "kathryn/word-list-4.html"),
     ("/workspace/practice/Kathryn_WordList5_Spelling.html",         "kathryn/spelling-word-list-5.html"),
+    ("/workspace/practice/Kathryn_WordList6_Spelling.html",         "kathryn/spelling-word-list-6.html"),
     ("/workspace/practice/Kathryn_Math_Quiz2_3.html",              "kathryn/math-quiz-2-3.html"),
     ("/workspace/practice/Eli_Math_Quiz5_Review.html",             "eli/math-quiz-5.html"),
     ("/workspace/practice/Eli_Number_Bonds_2x1.html",              "eli/number-bonds-2-digit-x-1-digit.html"),
