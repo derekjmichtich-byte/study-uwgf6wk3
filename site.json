@@ -196,6 +196,20 @@
   ],
   "aydan": [
     {
+      "title": "CHEM 110 Exam 3 \u2014 Practice & Timed Mock Exam",
+      "subject": "Chemistry",
+      "date": "2026-11-05",
+      "html": "chem110-exam3-practice.html",
+      "pdf": "chem110-exam3-study-guide.pdf"
+    },
+    {
+      "title": "CHEM 110 Exam 3 \u2014 Study Guide",
+      "subject": "Chemistry",
+      "date": "2026-11-05",
+      "html": "chem110-exam3-study-guide.html",
+      "pdf": "chem110-exam3-study-guide.pdf"
+    },
+    {
       "title": "CHEM 110 Final \u2014 Practice & Timed Mock Exam",
       "subject": "Chemistry",
       "date": "2026-11-04",
