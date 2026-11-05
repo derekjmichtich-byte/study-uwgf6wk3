@@ -193,5 +193,21 @@
       "html": "extra-practice-2026-10-31.html",
       "pdf": "extra-practice-2026-10-31.pdf"
     }
+  ],
+  "aydan": [
+    {
+      "title": "CHEM 110 Final \u2014 Practice & Timed Mock Exam",
+      "subject": "Chemistry",
+      "date": "2026-11-04",
+      "html": "chem110-practice.html",
+      "pdf": "chem110-study-guide.pdf"
+    },
+    {
+      "title": "CHEM 110 Final \u2014 Study Guide",
+      "subject": "Chemistry",
+      "date": "2026-11-04",
+      "html": "chem110-study-guide.html",
+      "pdf": "chem110-study-guide.pdf"
+    }
   ]
 }

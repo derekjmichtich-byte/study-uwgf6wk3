@@ -2,8 +2,9 @@
 """Render index.html and <kid>/index.html from site.json."""
 import json, os, html, datetime
 ROOT = os.path.dirname(os.path.abspath(__file__))
-KIDS = [("owen", "Owen", "#ff6b35", "🚀"), ("eli", "Eli", "#2a9d8f", "🦖"), ("kathryn", "Kathryn", "#9b5de5", "🦄")]
-SUBJ = {"math": "#f4a261", "spelling": "#4cc9f0"}
+KIDS = [("owen", "Owen", "#ff6b35", "🚀"), ("eli", "Eli", "#2a9d8f", "🦖"), ("kathryn", "Kathryn", "#9b5de5", "🦄"), ("aydan", "Aydan", "#1e407c", "")]
+MATURE = {"aydan"}  # college-level: plain styling, no stars/reward/reporting scripts
+SUBJ = {"math": "#f4a261", "spelling": "#4cc9f0", "chemistry": "#1e407c"}
 CSS = """*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:#fffaf0;color:#222}
 main{max-width:720px;margin:0 auto;padding:20px 16px 48px}h1{font-size:2.2rem;text-align:center;margin:12px 0 24px}
 .kids{display:grid;gap:18px}.kid{display:block;padding:34px 20px;border-radius:24px;color:#fff;text-decoration:none;font-size:2.4rem;font-weight:800;text-align:center;box-shadow:0 6px 0 rgba(0,0,0,.2)}
@@ -43,13 +44,35 @@ def learn_js(n):
     except Exception as e:
         print("  (no reward script on index pages:", e, ")"); return ""
     return f'<script>{js}</script><script>try{{Learn.init({{kid:{json.dumps(n)},page:"index",index:true}},__report.cfg,__report.testEnv);}}catch(e){{}}</script>'
+MCSS = """*{box-sizing:border-box}body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;background:#f6f7f9;color:#1d2433;line-height:1.5}
+header{background:#1e407c;color:#fff;padding:16px 18px}header a{color:#cfe0ff;text-decoration:none}header h1{font-family:Georgia,serif;font-weight:600;margin:4px 0 0;font-size:1.6rem}
+main{max-width:760px;margin:0 auto;padding:18px 14px 48px}.it{background:#fff;border:1px solid #d9dee7;border-radius:10px;padding:16px 18px;margin:0 0 14px}
+.it h2{font-family:Georgia,serif;font-weight:600;font-size:1.2rem;margin:4px 0}.sub{font-size:.8rem;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:#1e407c}
+.date{color:#5b6475;margin:0 0 10px;font-size:.95rem}.b{display:inline-block;padding:10px 16px;border-radius:7px;background:#1e407c;color:#fff;text-decoration:none;font-weight:600;margin:0 8px 6px 0;min-height:44px}
+.b.s{background:#fff;color:#1e407c;border:1px solid #1e407c}.note{color:#5b6475;font-size:.88rem}"""
+def mature_index(k, n, c, items):
+    items = sorted(items, key=lambda x: x["date"], reverse=True)
+    body = ""
+    for it in items:
+        o = f'<a class="b" href="{html.escape(it["html"])}">Open</a>' if it.get("html") else ""
+        p = f'<a class="b s" href="{html.escape(it["pdf"])}">Printable PDF</a>' if it.get("pdf") else ""
+        body += f'<div class="it"><div class="sub">{html.escape(it["subject"])}</div><h2>{html.escape(it["title"])}</h2><p class="date">{fmt(it["date"])}</p>{o}{p}</div>'
+    if not items: body = "<p>Nothing here yet.</p>"
+    body += '<p class="note">Progress is saved in this browser only.</p>'
+    os.makedirs(os.path.join(ROOT, k), exist_ok=True)
+    open(os.path.join(ROOT, k, "index.html"), "w").write(f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>{html.escape(n)} — study hub</title>
+<style>{MCSS}</style></head><body><header><a href="../">← Home</a><h1>{html.escape(n)}’s study hub</h1></header><main>{body}</main></body></html>\n""")
 def fmt(d):
     return datetime.date.fromisoformat(d).strftime("%a, %b %-d, %Y")
 def main():
     data = json.load(open(os.path.join(ROOT, "site.json")))
-    btns = "".join(f'<a class="kid" style="background:{c}" href="{k}/">{e} {n}</a>' for k, n, c, e in KIDS)
+    btns = "".join(f'<a class="kid" style="background:{c}" href="{k}/">{(e + " ") if e else ""}{n}</a>' for k, n, c, e in KIDS)
     open(os.path.join(ROOT, "index.html"), "w").write(page("Practice", f'<h1>Who\'s practicing? 📚</h1><div class="kids">{btns}</div>'))
     for k, n, c, e in KIDS:
+        if k in MATURE:
+            mature_index(k, n, c, data.get(k, [])); continue
         items = sorted(data.get(k, []), key=lambda x: x["date"], reverse=True)
         cards = ""
         for it in items:
