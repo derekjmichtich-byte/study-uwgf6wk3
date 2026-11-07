@@ -59,11 +59,22 @@ def mature_index(k, n, c, items):
         body += f'<div class="it"><div class="sub">{html.escape(it["subject"])}</div><h2>{html.escape(it["title"])}</h2><p class="date">{fmt(it["date"])}</p>{o}{p}</div>'
     if not items: body = "<p>Nothing here yet.</p>"
     body += '<p class="note">Progress is saved in this browser only.</p>'
+    ping = ""
+    if k == "aydan":
+        try:
+            import sys
+            sys.path.insert(0, "/workspace/practice/src")
+            import build_common
+            ping = "<script>" + build_common.open_ping_js("/workspace/practice/reporting/config.json", {
+                "kid": "Aydan", "topic": "aydan-hub", "title": "Aydan's study hub",
+                "subject": "Chemistry", "page": "Aydan's study hub"}) + "</script>"
+        except Exception as e:
+            print("  (no open-ping on aydan hub:", e, ")")
     os.makedirs(os.path.join(ROOT, k), exist_ok=True)
     open(os.path.join(ROOT, k, "index.html"), "w").write(f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>{html.escape(n)} — study hub</title>
-<style>{MCSS}</style></head><body><header><a href="../">← Home</a><h1>{html.escape(n)}’s study hub</h1></header><main>{body}</main></body></html>\n""")
+<style>{MCSS}</style></head><body><header><a href="../">← Home</a><h1>{html.escape(n)}’s study hub</h1></header><main>{body}</main>{ping}</body></html>\n""")
 def fmt(d):
     return datetime.date.fromisoformat(d).strftime("%a, %b %-d, %Y")
 def main():

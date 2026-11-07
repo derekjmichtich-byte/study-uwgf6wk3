@@ -68,6 +68,7 @@ label.ck{display:inline-flex;gap:6px;align-items:center;margin:4px 12px 4px 0;fo
 //     + extra:true (and warm:true) for adaptive extra-practice / warm-up questions: they never count toward
 //       score/answered/missed; they go at the END of answers[] (flag extra:true) and are summed in extraPractice[]
 //   Report.finish({mode,round,score,total,startedAt,missed:[{item,typed,correct,skill}]}, endCard)  end screen
+//   Report.opened() (auto from init)  page-open ping; localStorage throttle 1h/topic; Code.gs Page Opens tab
 var Report=(function(){
   "use strict";
   var CFG={"url":"https://script.google.com/macros/s/AKfycbxQ3K81vopU37mev_y1elwxT7iwlrClv5hdl5zm99KSvljXn3Q5YnJv20KzY9gEn97MYQ/exec","token":"LmCMZWmaBlaC-nEplyb_hU5mDAbZX4Ti","mode":"parent"};
@@ -181,8 +182,21 @@ var Report=(function(){
     S.sentIncomplete=k;
     var p=payload("incomplete");p.reason=why;window.__lastIncomplete=p;beacon(p);return p;
   }
+  // page-open ping: at most once per kid+topic per hour on this device (server also throttles)
+  function opened(){
+    if(!on||!meta.kid) return null;
+    var k="practiceOpened_v1:"+meta.kid+":"+(meta.topic||meta.page||"");
+    try{var last=+localStorage.getItem(k)||0;if(Date.now()-last<3600000){log.push("opened-throttled");return null;}localStorage.setItem(k,String(Date.now()));}catch(e){}
+    var now=new Date(),p={v:2,status:"opened",test:TESTENV&&LIVEURL,token:CFG.token||"",sessionId:"open-"+uid(),
+      kid:meta.kid,topic:meta.topic,title:meta.title,subject:meta.subject,page:meta.page,
+      device:device(),finishedAt:now.toISOString(),openedAt:now.toISOString()};
+    window.__lastOpened=p;log.push("opened:"+meta.page);
+    post(p).then(function(){log.push("opened-sent");},function(e){log.push("opened-failed:"+(e&&e.message));});
+    return p;
+  }
   function init(o){o=o||{};meta={kid:clip(o.kid,40),topic:clip(o.topic||o.page,80),title:clip(o.title||o.page,120),subject:clip(o.subject,40),page:clip(o.page||o.title,160)};
-    if(window.Learn&&Learn.init) try{Learn.init(meta,CFG,TESTENV);}catch(e){log.push("learn-init:"+e);}}
+    if(window.Learn&&Learn.init) try{Learn.init(meta,CFG,TESTENV);}catch(e){log.push("learn-init:"+e);}
+    try{opened();}catch(e){log.push("opened-error:"+e);}}
   function begin(o){if(window.Learn&&Learn.begin)Learn.begin();if(!on) return;abandon("started something else");if(S){clearTimeout(S.away&&S.away.timer);clearInterval(S.away&&S.away.poll);}S=newSession(o);log.push("begin:"+S.id);}
   function answer(a){
     if(!on) return;
@@ -219,8 +233,8 @@ var Report=(function(){
     window.addEventListener("blur",function(){setTimeout(function(){if(isAway()) awayStart();},0);});
     window.addEventListener("focus",onBack);
   }
-  window.__report={cfg:CFG,testEnv:TESTENV,device:device,meta:function(){return meta;},queue:loadQ,flush:flush,payload:function(s){return S&&payload(s||"incomplete");},session:function(){return S;},isAway:isAway,abandon:abandon,QKEY:QKEY};
-  return {init:init,begin:begin,answer:answer,finish:finish,flush:flush,enabled:on};
+  window.__report={cfg:CFG,testEnv:TESTENV,device:device,meta:function(){return meta;},queue:loadQ,flush:flush,payload:function(s){return S&&payload(s||"incomplete");},session:function(){return S;},isAway:isAway,abandon:abandon,opened:opened,QKEY:QKEY};
+  return {init:init,begin:begin,answer:answer,finish:finish,flush:flush,opened:opened,enabled:on};
 })();
 
 </script>
