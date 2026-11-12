@@ -94,13 +94,6 @@
       "pdf": "spelling-vowel-sounds-oo.pdf"
     },
     {
-      "title": "Reading Practice",
-      "subject": "Reading",
-      "date": "2026-10-28",
-      "html": "reading-practice.html",
-      "pdf": "reading-practice.pdf"
-    },
-    {
       "title": "English Test Review: Lessons 28\u201331",
       "subject": "English",
       "date": "2026-10-22",
@@ -134,6 +127,20 @@
       "date": "2026-11-07",
       "html": "extra-practice-2026-11-07.html",
       "pdf": "extra-practice-2026-11-07.pdf"
+    },
+    {
+      "title": "Spelling: Vowel Sounds /\u00e4r/, /\u00e2r/ & /\u00eer/",
+      "subject": "Spelling",
+      "date": "2026-11-11",
+      "html": "spelling-vowel-sounds-ar-air-ear.html",
+      "pdf": "spelling-vowel-sounds-ar-air-ear.pdf"
+    },
+    {
+      "title": "Reading Practice",
+      "subject": "Reading",
+      "date": "2026-11-11",
+      "html": "reading-practice.html",
+      "pdf": "reading-practice.pdf"
     }
   ],
   "kathryn": [
