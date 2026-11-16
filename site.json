@@ -215,18 +215,25 @@
       "pdf": "spelling-word-list-7.pdf"
     },
     {
-      "title": "Reading Practice",
-      "subject": "Reading",
-      "date": "2026-11-09",
-      "html": "reading-practice.html",
-      "pdf": "reading-practice.pdf"
-    },
-    {
       "title": "Extra practice: week of Nov 14",
       "subject": "Spelling",
       "date": "2026-11-14",
       "html": "extra-practice-2026-11-14.html",
       "pdf": "extra-practice-2026-11-14.pdf"
+    },
+    {
+      "title": "Spelling Word List 8",
+      "subject": "Spelling",
+      "date": "2026-11-16",
+      "html": "spelling-word-list-8.html",
+      "pdf": "spelling-word-list-8.pdf"
+    },
+    {
+      "title": "Reading Practice",
+      "subject": "Reading",
+      "date": "2026-11-16",
+      "html": "reading-practice.html",
+      "pdf": "reading-practice.pdf"
     }
   ],
   "aydan": [
