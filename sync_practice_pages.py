@@ -39,6 +39,8 @@ PAGES = [  # (source html, site path)
     ("/workspace/practice/Eli_Extra_Practice_2026-11-07.html",      "eli/extra-practice-2026-11-07.html"),
     ("/workspace/practice/Eli_Extra_Practice_2026-11-14.html",      "eli/extra-practice-2026-11-14.html"),
     ("/workspace/practice/Kathryn_Extra_Practice_2026-11-14.html",  "kathryn/extra-practice-2026-11-14.html"),
+    ("/workspace/practice/Eli_Extra_Practice_2026-11-21.html",      "eli/extra-practice-2026-11-21.html"),
+    ("/workspace/practice/Kathryn_Extra_Practice_2026-11-21.html",  "kathryn/extra-practice-2026-11-21.html"),
     ("/workspace/practice/wip/owen/lesson-27-quest.html",          "owen/lesson-27-quest.html"),
 ]
 check = "--check" in sys.argv
